@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <br><br>
+    <div class="container  card p-4 shadow-lg">
+        <form class="col-10 mx-auto" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <center><h2 class="content css ce">Add Food to website</h2></center> 
+            <hr>
+            <div class="row mb-3">
+                <label for="id" class="col-sm-2 col-form-label">Food Id:</label>
+                <div class="col-sm-10">
+                    <input type="number" name="id" required class="form-control" id="id">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Food Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" required class="form-control" id="name">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="type" class="col-sm-2 col-form-label">Food Type:</label>
+                <div class="col-sm-10">
+                    <select id="type" class="form-select" name="f_type">
+                        <option selected value="--"> ---- </option>
+                        {% for i in catagory %}
+                        <option  value="{{i.fc_id}}" value="{{i.fc_name}}" >{{i.fc_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+             <div class="row mb-3">
+                <label for="img" class="col-sm-2 col-form-label"> Food Image:</label>
+                <div class="col-sm-10">
+                    <input type="file" name="img" required class="form-control" id="img">
+                </div>
+            </div> 
+
+            <div class="row mb-3">
+                <label for="Price" class="col-sm-2 col-form-label">Price:</label>
+                <div class="col-sm-10">
+                    <input type="number" name="price" required class="form-control" id="Price">
+                </div>
+            </div>
+
+            
+
+            <button type="submit" class="btn btn-primary mt-3">Add Food</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

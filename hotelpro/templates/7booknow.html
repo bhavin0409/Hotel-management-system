@@ -1,0 +1,222 @@
+{% extends "0main.html" %}
+{% block title %}
+Book Now
+{% endblock title %}
+{% block link1 %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static '/static/css/about.css' %}">
+{% endblock link1 %}
+
+{% block main %}
+
+
+<div class="v111_759">
+	<div class="v111_760"></div>
+	<div class="v111_761"></div>
+	<span class="v111_762">Book Room</span>
+</div>
+
+<div class="container">
+	<div class="row mt-5 mb-5">
+		<div class="col-sm-6">
+			<div class="card mb-2" style="background-color: burlywood;"><br>
+				<h3 class="text-center"><b>Booking Summary</b></h3>
+				<hr>
+				<div class="card-body">
+					<h5>Room Name:&nbsp; {{rdetail.room_name}}</h5>
+					<h5>Room Number:&nbsp; {{rdetail.room_id}} </h5>
+					<hr>
+					<img src="/media/{{rdetail.room_img}}" class="img-fluid" alt="room_image"> <br>
+					<hr>
+					<p>
+						<b>
+							Room Type :&nbsp; {{rdetail.room_type}}
+						</b>
+					</p>
+					<p><b>Room Details:&nbsp; {{rdetail.room_descri}} </b></p>
+					<hr>
+					<h3><b>Base Price of Room:
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							RS. {{rdetail.room_price}} </b></h3>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-5 offset-sm-1">
+			<div class="card " style="background-color: burlywood;">
+				<div class="card-body">
+					<br>
+					<h3 class="text-center"><b>Billing Summary</b></h3>
+
+					<hr>
+					<form method="POST">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-md-7">
+								<div class="form-group">
+									<span class="form-label">Check In</span>
+									<input class="form-control " name="check_in" id="dateInput"  type="date" required>
+								</div>
+							</div>
+							<div class="col-md-7 mt-3">
+								<div class="form-group">
+									<span class="form-label">Check Out</span>
+									<input class="form-control " name="check_out" id="dateInput1" type="date" required>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="text-start">
+							<h5><b>Number of Days: {{number_of_days}}</b></h5>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="row mb-6">
+								<label for="type" class="col-sm-9 col-form-label ">
+									<h4><b>Extra Amenities:</b></h4>
+								</label>
+
+								<div class="col-sm-10">
+									<select id="type" class="form-select" name="Extra-Amenities" multiple name="f_type">
+										<option selected value="0"> No Needed Extra Amenities </option>
+										<option value="{{rdetail.ac_price}}"> A/C Price : {{rdetail.ac_price}}
+										</option>
+										<option value="{{rdetail.extra_bed_price}}">1 Extra Bed
+											Price:{{rdetail.extra_bed_price}}</option>
+
+									</select>
+
+								</div>
+							</div>
+						</div>
+						<br>
+						<button class="btn btn-danger" href=""> Check Price</button>
+						<br>
+					</form>
+
+					<hr>
+					<div class="row">
+						<div class="col-md-12 ">
+
+							<b>
+								<!-- Base Price of Room: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								 RS. {{rdetail.room_price}} <br> -->
+								Base Price {{rdetail.room_price}} * Number of Days {{number_of_days}}:-
+								RS. {{Day_price}} <br><br>
+								Price of Exatra Amenities:-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+								RS. {{total_amenities}} <br><br>
+								12% GST Tax:-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								RS. {{GST}} <br><br>
+							</b>
+						</div>
+					</div>
+					<hr>
+					<h4><b> Price With Include GST Taxes :- Rs. {{final_total}}</b></h4>
+
+				</div>
+			</div>
+			<br>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 mb-5 mt-3">
+			<div class="card" style="background-color: burlywood;">
+				<div class="card-body">
+					<form method="post">
+						{% csrf_token %}
+						<div class="form-header">
+							<h2 class="text-center"><b>Make your reservation</b></h2>
+						</div><br>
+						<hr>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<span class="form-label">Check In:</span>
+									<input class="form-control" type="text" name="check_in" readonly
+										value="{{start_date_str}}" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<span class="form-label">Check Out:</span>
+									<input class="form-control" type="text" name="check_out" readonly
+										value="{{end_date_str}}" required>
+								</div>
+							</div>
+						</div> <br>
+						<div class="form-group">
+							<span class="form-label">Customer Id:</span>
+							<input class="form-control" type="number" name="customer_id" readonly
+								value="{{request.session.customer}}">
+						</div><br>
+
+						<div class="form-group">
+							<span class="form-label">Room number:</span>
+							<input class="form-control" type="number" name="room_id" readonly
+								value="{{rdetail.room_id}}">
+						</div><br>
+						<div class="form-group">
+							<span class="form-label">Room Type:</span>
+							<input class="form-control" type="text" readonly name="Room_type"
+								value="{{rdetail.room_type}}">
+						</div><br>
+						<div class="form-group">
+							<span class="form-label">Total Price :</span>
+							<input class="form-control" type="number" name="final_total" readonly
+								value="{{final_total}}">
+						</div><br>
+						<div class="form-group">
+							<span class="form-label">Name:</span>
+							<input class="form-control" type="text" name="customer_name" placeholder="Enter your Name" required>
+						</div><br>
+
+						<div class="form-group">
+							<span class="form-label">Email:</span>
+							<input class="form-control" type="email" name="customer_email"
+								placeholder="Enter your Email Address" required>
+						</div><br>
+
+						<div class="form-group">
+							<span class="form-label">Phone:</span>
+							<input class="form-control" type="tel" name="customer_number"
+								placeholder="Enter your phone number" required>
+						</div><br>
+
+
+						{%if messages%}
+						<div id="error-alert" class="alert alert-danger" role="alert">
+							{% for avail in messages %}
+							{{avail}}
+							{% endfor %}
+						</div>
+						{%endif%}
+
+
+						<div class="text-end">
+							<button type="submit" class="btn btn-warning mb-5  fw-bold">Book Now</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Get the current date
+	var today = new Date();
+	console.log(('0' + today.getDate()).slice(-2))
+	// Convert it to the format required by the date input (YYYY-MM-DD)
+	var currentDate = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+
+	// Set the min attribute of the date input to the current date
+	document.getElementById('dateInput').setAttribute('min', currentDate);
+	document.getElementById('dateInput1').setAttribute('min', currentDate);
+</script>
+<script src="{% static '/static/js/msg.js' %}"></script>
+
+{% endblock main %}

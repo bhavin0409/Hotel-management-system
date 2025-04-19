@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href=" {% static '/static/css/bootstrap.css' %} ">
+  <link rel="stylesheet" href="  {% static '/static/css/bootstrap.min.css' %} ">
+  
+  
+{% block link1 %}
+  
+{% endblock link1 %}
+  
+  
+
+  <title>Maninagar Residency | {% block title %}  {% endblock title %}</title>
+</head>
+<body>
+    <div class="container-fluid px-0">
+        <nav class="navbar navbar-expand-lg d-flex py-0 mb-4" id="nav">
+        <div class="d-flex justify-content-start align-items-center px-5" id="lNav">
+          <a href="/">
+            <svg width="50" height="42" viewBox="0 0 50 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_33_148)">
+            <path d="M17.832 0H32.139L24.9805 7.20739L17.832 0Z" fill="#8F7252"/>
+            <path d="M0 0.189453V42.0003H5.11881L7.56436 39.6111V7.2077L0 0.189453Z" fill="#311314"/>
+            <path d="M10.5449 11.1797V34.9123L18.2083 27.3665V18.5762L10.5449 11.1797Z" fill="#594341"/>
+            <path d="M8.39648 42.0005L18.2084 32.0156V42.0005H8.39648Z" fill="#82624D"/>
+            <path d="M21.1681 42.0002L21.0889 28.7202L28.8512 21.0947V42.0002H21.1681Z" fill="#F7C275"/>
+            <path d="M31.8213 20.0495V42.0002H39.4253V12.6729L31.8213 20.0495Z" fill="#F6AD47"/>
+            <path d="M21.0889 20.0488V24.877L23.3859 22.5475L21.0889 20.0488Z" fill="#827373"/>
+            <path d="M42.3662 7.70545V42.0003H49.9999V0.189453L42.3662 7.70545Z" fill="#F5991B"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_33_148">
+            <rect width="50" height="42" fill="white"/>
+            </clipPath>
+            </defs>
+            </svg>
+          </a>
+        </div>
+        <div class="d-flex justify-content-around align-items-center" id="rNav">
+            <a class="text-decoration-none fw-bold fs-6" href="/">HOME</a>
+            <a class="text-decoration-none fw-bold fs-6" href="/ourroom/">ROOM</a>
+            <a class="text-decoration-none fw-bold fs-6" href="/foodmenu">Food Menu</a>
+            <a class="text-decoration-none fw-bold fs-6" href="/gallery/">GALLERY</a>
+            <a class="text-decoration-none fw-bold fs-6" href="/contact/">CONTACT US</a>
+            <a class="text-decoration-none fw-bold fs-6" href="/about/">ABOUT US</a>
+            <!-- <a class="text-decoration-none fw-bold fs-6" href="/about/">Feed Back</a> -->
+        </div>
+
+        {%if request.session.customer %}
+        <div class="d-flex justify-content-end align-items-center px-5"><a class="btn btn-outline-light" style="margin-left: 10px;"  href="/my_reservation/{{request.session.customer}}"><img src="/static/images/bed (1).png" alt="" height="25" width="25"> My_Reservation</a></div>
+            
+            <div class="d-flex justify-content-end align-items-center px-5"><a class="btn btn-outline-light" href="/profile/{{request.session.customer}}"><i class="bi bi-person-square" style="font-size: 20px;" ></i></a></div>
+            <div class="d-flex justify-content-end align-items-center px-5"><a href="/cuslogout" class="btn btn-outline-light">LOGOUT</a></div>
+        {%else%}
+            <div class="d-flex justify-content-end align-items-center px-5"><a class="btn btn-outline-light" href="/cus_login">LOGIN</a>
+            <div class="d-flex justify-content-end align-items-center px-5"><a class="btn btn-outline-light" href="/cus_registration">REGISTRATION</a></div></div>
+        {%endif%}
+
+        </nav>
+    </div>
+    {% block main %}
+      
+    {% endblock main %}
+    <div class="container-fluid px-0 ">
+    <footer>
+        <div id="logo-foot">
+          <div>
+            <a href="/">
+            <svg width="115" height="96" style="margin-bottom: 15px ; margin-left:32px; " viewBox="0 0 115 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_57_70)">
+              <path d="M41.0129 0H73.9189L57.4545 16.474L41.0129 0Z" fill="#8F7252"/>
+              <path d="M0 0.432373V96H11.7733L17.398 90.539V16.4741L0 0.432373Z" fill="#311314"/>
+              <path d="M24.2524 25.553V79.799L41.8782 62.5513V42.4594L24.2524 25.553Z" fill="#594341"/>
+              <path d="M19.3108 96L41.8781 73.1775V96H19.3108Z" fill="#82624D"/>
+              <path d="M48.6871 95.9999L48.5049 65.6458L66.3583 48.2161V95.9999H48.6871Z" fill="#F7C275"/>
+              <path d="M73.1902 45.8269V96H90.6793V28.9661L73.1902 45.8269Z" fill="#F6AD47"/>
+              <path d="M48.5049 45.8269V56.8627L53.7881 51.5382L48.5049 45.8269Z" fill="#827373"/>
+              <path d="M97.4426 17.6118V96H115V0.432373L97.4426 17.6118Z" fill="#F5991B"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_57_70">
+              <rect width="115" height="96" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+              
+            </a> 
+            <h5 class="text-center text-white" style="padding-right: 105px;">Hotel <br>Maninagar Residency</h5>         
+          </div>
+        </div>
+        <div id="link-foot">
+          <div id="foot-menu">
+            <a href="/about/">ABOUT</a>
+            <a href="/gallery/">GALLERY</a>
+            <a href="/contact/">CONTACT</a>
+            <a href="/ourroom/">ROOMS</a>
+            <a href="/foodmenu/">FOOD MENU</a>
+            
+
+          </div>
+          <div id="touch">
+            <h5>Get in Touch</h5>
+            <div class="sos">
+              <img src="/static/images/email.png" alt="(ico mail)" srcset="">
+              <a href="#">Email: @hotelmaninagarresidency021</a>
+            </div>
+            <div class="sos">
+              <img src="/static/images/phone-call.png" alt="(ico mail)" srcset="">
+              <a href="#">Mobile: +97268 82598</a>
+            </div>
+            <div class="sos">
+              <img src="/static/images/pin.png" alt="(ico mail)" srcset="">
+              <a href="#">Address: DK Complex, Maninagar, Ahmedabad, Gujarat 380008</a>
+
+            </div>
+          </div>
+          <div id="follow">
+            <h5>Follow us </h5>
+            <div class="sos">
+              <img src="/static/images/facebook-app-symbol.png" alt="(fb ico)" srcset="">
+              <a href="#">Facebook</a>
+            </div>
+            <div class="sos">
+              <img src="/static/images/twitter.png" alt="(fb ico)" srcset="">
+              <a href="#">Twitter</a>
+            </div>
+            <div class="sos">
+              <img src="/static/images/instagram.png" alt="(fb ico)" srcset="">
+              <a href="#">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="{% static '/static/js/jquery.min.js' %}"></script>
+    <script src="{% static '/static/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/static/js/bootstrap.js' %}"></script>
+  </body>
+  </html>

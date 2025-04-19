@@ -1,0 +1,126 @@
+{% extends "0main.html" %}
+{% block title %}
+Room
+{% endblock title %}
+{% block link1 %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static '/static/css/about.css' %}">
+<!-- <link rel="stylesheet" href="{% static '/static/css/r.css' %}"> -->
+
+{% endblock link1 %}
+
+
+{% block main %}
+
+<div class="container-fluid px-0">
+  <div class="v111_759">
+    <div class="v111_760"></div>
+    <div class="v111_761"></div>
+    <span class="v111_762">Room</span>
+  </div>
+
+
+
+  <br><br>
+  <h1>
+    <center><b>Our Rooms</b></center>
+    </h2>
+    <hr><br>
+
+    <div class="container-fluid mx-auto pb-5">
+      <div class="row ms-5 justify-content-evenly me-5">
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-10">
+              <h4> Filter Rooms</h4>
+
+              <ul class="list-group mt-3">
+                <a class="btn btn-secondary mt-1" href="/ourroomr/All"> All Type </a>
+                <a class="btn btn-secondary mt-1" href="/ourroomr/Royal"> Royal </a>
+                <a class="btn btn-secondary mt-1" href="/ourroomr/SRoyal"> Super Royal </a>
+                <a class="btn btn-secondary mt-1" href="/ourroomr/Gold"> Gold </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            {% for i in Room %}
+
+            <div class="col-md-4 ">
+
+              <div class="card mt-5 " style="width: 18rem; background-color: burlywood;">
+                <br>
+                <h5 class="card-title text-center">
+                  <b>
+                    Room Number:&nbsp; {{i.room_id}}
+                  </b>
+                </h5>
+
+                <img src="/media/{{i.room_img}}" class="card-img-top" height="175px" alt="...">
+
+                <div class="card-body">
+
+                  <h5 class="card-title">
+                    <b>
+                      Room Name:&nbsp; {{i.room_name}}
+                      <br>
+                      <br>
+                      Type :&nbsp; {{i.room_type}}
+                    </b>
+                  </h5>
+                  <p class="card-text">
+                    <br>
+                    <b>
+                      Details:&nbsp; {{i.room_descri |truncatechars:50}}
+                    </b>
+                  </p>
+
+                  <h5 class="card-text ">
+                    <br>
+                    <b>
+                      Price:&nbsp; {{i.room_price}}/Day
+                    </b>
+                    <br>
+                  </h5>
+
+                  <a class="btn btn-danger" href="/booknow/{{i.room_id}}"> Book Now</a>
+                  <a class="btn btn-danger" href="/roomdetail/{{i.room_id}}"> Room Details</a>
+                </div>
+              </div>
+            </div>
+
+
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr><br>
+
+    <center>
+      <h2><b>Our Amazing Facilities</b></h2>
+    </center>
+    <br>
+    <div class="row justify-content-evenly mb-5">
+      <div class="col-md-10 ">
+        <a href="#" class="list-group-item list-group-item-action list-group-item mt-2 text-center  ">
+          <b>Family Size Room</b>
+        </a><br>
+        <a href="#" class="list-group-item list-group-item-action list-group-item mt-2 text-center ">
+          <b>Well furnished Rooms</b>
+        </a><br>
+        <a href="#" class="list-group-item list-group-item-action list-group-item mt-2 text-center ">
+          <b>High Speed Internet</b>
+        </a><br>
+        <a href="#" class="list-group-item list-group-item-action list-group-item mt-2 text-center ">
+          <b>LCD T.V. With Verious Chennals </b>
+        </a><br>
+      </div>
+    </div>
+
+
+
+    {% endblock main %}

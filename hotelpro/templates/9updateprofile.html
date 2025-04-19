@@ -1,0 +1,89 @@
+{% extends "0main.html" %}
+
+{% block title %}
+  Update Profile
+{% endblock title %}
+
+{% block link1 %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static '/static/css/about.css' %}">
+<link rel="stylesheet" href="{% static '/static/css/log.css' %}">
+{% endblock link1 %}
+
+{% block main %}
+<div class="container-fluid px-0">
+  <div class="v111_759">
+    <div class="v111_760"></div>
+   <div class="v111_761"></div>
+   <span class="v111_762"> Profile</span>
+</div>
+<br>
+   
+    <form action="" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div style="width: 25%;font-weight: bold; margin: auto;margin-top: 2%;text-align: center;">
+            <H3>Welcome &nbsp;{{customer.cus_name}}</H3>
+        </div>
+        <div style="width: 50%; margin: auto;margin-top: 2%; border: 1px solid black;padding: 2%; border-radius: 10px;">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l2">Name :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="name" id="l2" value="{{customer.cus_name}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l4">Email :</label>
+                <div class="col-sm-10">
+                    <input type="emial" class="form-control" name="email" id="l4" value="{{customer.cus_email}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l5">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="password" id="l5" value="{{customer.cus_password}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l5">Confrim Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" name="repassword" id="l5" value="{{customer.cus_password}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l5">Gender:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="gender" id="l5" value="{{customer.cus_gender}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l6">Phone Number :</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="contact" id="l6" maxlength="10" minlength="10" pattern="[0-9]{10}" value="{{customer.cus_mobileno}}"><br />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="l7">Address :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="address" id="l7" value="{{customer.cus_address}}"><br />
+                </div>
+            </div>
+            {%if messages%}
+                <div id="error-alert" class="alert alert-danger" role="alert">
+                    {% for up in messages %}
+                    {{up}}
+                    {% endfor %}
+                </div>
+            {%endif%}
+            <center>
+                <a class="btn btn-outline-primary" href="/profile/{{request.session.customer}}">BACK</a>
+                <input type="hidden" name="id" value="{{customer.cus_id}}">
+                <button type="submit" class="btn btn-outline-primary">SUBMIT</button>
+            </center>
+        </div>
+    </form>
+  <br>
+  <script src="{% static '/static/js/msg.js' %}"></script>
+{% endblock main %}

@@ -1,0 +1,83 @@
+ /* Basic CSS styles */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.addbtn{
+    width: 30px;
+    width: 30px;
+}
+.color {
+    background-color: white;
+    color: black;
+}
+h1 {
+    text-align: center;
+}
+/* Navbar styles */
+nav {
+    background-color: #2b0363;
+    color: #fff;
+    padding: 10px 0;
+}
+nav ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+nav ul li {
+    display: inline;
+    margin-right: 30px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    
+}
+
+/* Basic CSS styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+.container1 {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-width: 5px;
+}
+h1 {
+    text-align: center;
+}
+/* Dashboard card styles */
+.card1 {
+    background-color: rgba(17, 107, 218, 0.073);
+    padding: 20px;
+    margin-bottom: 20px; 
+    opacity: 0.70;
+    border: 2px solid black;
+    border-radius: 10px 20px 10px 20px;
+    box-shadow: 2px 4px black;
+}
+.card h2 {
+    margin-top: 5;
+}
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.backbtn{
+    position: relative;
+    top: 22px;
+    left: 13px;
+    width: 28px;
+    height: 28px;
+}

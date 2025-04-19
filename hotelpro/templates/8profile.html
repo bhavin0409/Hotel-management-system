@@ -1,0 +1,46 @@
+{% extends "0main.html" %}
+
+{% block title %}
+  Profile
+{% endblock title %}
+
+{% block link1 %}
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<link rel="stylesheet" href="{% static '/static/css/about.css' %}">
+{% endblock link1 %}
+
+{% block main %}
+<div class="container-fluid px-0">
+  <div class="v111_759">
+    <div class="v111_760"></div>
+   <div class="v111_761"></div>
+   <span class="v111_762"> Profile</span>
+</div>
+<div class="container my-5">
+  <div class="row ">
+  <h3 class="text-capitalize">Welcome {{pd.cus_name}} </h3><hr>
+   <div class="col-sm-9 offset-sm-1">
+    <div class="row">
+     <div class="col-sm-7">
+      <div class="card shadow p-3 mb-5 bg-body rounded">
+       <div class="card-body ">
+        <h4 class="text-capitalize"> {{pd.cus_name}} Detail </h4><hr>
+        <h5 class="text-capitalize">Name : {{pd.cus_name}} </h5>
+        <h5>Mobile No : {{pd.cus_mobileno}} </h5>
+        <h5>Email Address : {{pd.cus_email}} </h5>
+        <h5 class="text-capitalize">Gender: {{pd.cus_gender}} </h5>
+        <h5 class="text-capitalize">Address: {{pd.cus_address}} </h5> 
+        <br><br>
+        <a href="/updateprofile/{{pd.cus_id}}" class="btn btn-outline-success"> Update Profile</a>
+       </div>
+      </div>
+     </div>
+     
+    </div>
+   </div>
+  </div>
+ </div>
+{% endblock main %}

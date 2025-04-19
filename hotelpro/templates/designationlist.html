@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+    <div class="table-responsive">
+    <table class="table table-bordered border-dark">
+        <div style="text-align: right;margin-right: 12%;">
+            <a href="/designation" style=" text-decoration: none;"><svg  xmlns="http://www.w3.org/2000/svg"    fill="currentColor"
+                    class="bi bi-person-fill-add addbtn " viewBox="0 0 16 16">
+                    <path
+                        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                    <path
+                        d="M2 13c0 1 1 1 1 1h5.256A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1 1.544-3.393Q8.844 9.002 8 9c-5 0-6 3-6 4" />
+                </svg>  Add New Designation </a>
+        </div>
+       
+            
+            
+            <h3><center>  Designation Table</center></h3><br>
+
+            <thead>
+            <tr>
+                <th scope="col">Designation Id</th>
+                <th scope="col">Designation Name</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+                
+            </tr>
+            </thead>
+             <tbody>
+            {% for i in desig %}
+            <tr>
+                <td scope="col">{{i.des_id}}</td>
+                <td scope="col">{{i.des_name}}</td>
+                <td scope="col"><a class="btn btn-outline-primary" href="/designation_edit/{{i.des_id}}">update</a></td>
+                <td scope="col"><a class="btn btn-outline-danger" href="/designation_delete/{{i.des_id}}">delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody> 
+        </table>
+        </div>
+     
+{% endblock content %}

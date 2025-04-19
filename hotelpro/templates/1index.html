@@ -1,0 +1,139 @@
+
+
+{% extends "0main.html" %}
+
+{% block title %}
+  Home
+{% endblock title %}
+
+{% block link1 %}
+{% load static %}
+<link rel="stylesheet" href="{% static '/static/css/style.css' %}">
+
+
+{% endblock link1 %}
+
+
+{% block main %}
+  
+
+
+  <div class="container-fluid px-0">
+    
+    <video autoplay loop muted src="static/images/hero_vid.mp4"></video> <!-- COMMENT THIS FOR BG IMG -->
+    
+    
+    <main class="position-relative">
+      <div id="page1" class="position-relative">
+        <div id="lbl"></div>
+        <div class="position-absolute" id="heroText">
+          <h2>WELCOME TO</h2>
+          <h1 class="fs-1">HOTEL MANINAGAR RESIDENCY</h1>
+          <P class="fs-5">Book your stay and enjoy Luxury redefined at the most affordable rates.</P>
+        </div>
+      </div>
+
+      <div id="page2" class="position-relative d-flex">
+        <div id="ico">
+          <img src="static/images/5-stars.png" alt="Icon" id="ico-c">
+        </div>
+        <div id="left2" class="">
+          <img src="static/images/page2.png" alt="Room_img">
+          <img src="static/images/panjabi.png" alt="punjabi-angithi">
+        </div>
+        <div id="right2" class="">
+          <h6>WELCOME TO HOTEL MANINAGAR RESIDENCY</h6>
+          
+          <div class="btn btn-primary" id="btn">Why Choose us</div>
+          
+          <p>Hotel Maninagar Residency offers ultimate comfort and provides you the Best Rooms in Maninagar Ahmedabad. This hotel is a beautiful combination of traditional grandeur and modern facilities.The rooms are furnished with a range of modern amenities such as television and internet access. Very clean rooms, friendly staff, and a nice location made this wonderful place to stay. The Hotel Maninagar Residency is located in a calm and posh locality of Ahmedabad, only 11 km from the airport and 3 km from the railway station, and has easy access to office and commercial business complexes and centers. It is close to the town and has a calm, peaceful, and serene atmosphere.</p>
+          
+          <h6>The hotel's rooms range from comfortable Standard rooms for the budget-conscious to all-suite rooms.</h6>
+          
+          <p>Come alone or bring your family with you, stay here for a night or for weeks. Feel free to contact us anytime in case you have any questions or concerns. We are working in this field since last 30 years and providing best services to our valuable customers.</p>
+          <a class="btn btn-dark mt-1"  href="/about"> Know more </a>
+        </div>
+      </div>
+
+      <div id="page3" class="position-relative">
+        <h6>ROOMS</h6>
+        <h5>Types of Rooms</h5>
+        <div id="con">
+          <div id="room-container">
+            <div id="room-card">
+              <img src="/media/{{room1.room_img}}" alt="room">
+              <h3>{{room1.room_type}} Room</h3>
+              <a class="btn btn-secondary mt-1" style="margin-left: 180px;" href="/ourroomr/Royal"> Royal </a>
+            </div>
+            <div id="room-card">
+              <img src="/media/{{room2.room_img}}" alt="room">
+              <h3> {{room2.room_type}} Room</h3>
+              <a class="btn btn-secondary mt-1" style="margin-left: 164px;" href="/ourroomr/SRoyal"> Super Royal </a>
+            </div>
+            <div id="room-card">
+              <img src="/media/{{room3.room_img}}" alt="room">
+              <h3> {{room3.room_type}} Room </h3>
+              <a class="btn btn-secondary mt-1" style="margin-left: 180px;" href="/ourroomr/Gold"> Gold </a>
+            </div>
+         
+        </div>
+        
+        </div>
+        <br><br><br><br>
+        <h2 id="f-text">Discover Room <br>With Best Facilities</h2>
+        <div id="Facility">
+          <div id="best-card">
+            <img src="static/images/parked-car (1).png" alt="parking">
+            <p>Parking</p>
+          </div>
+          <div id="best-card">
+            <img src="static/images/laundry-machine.png" alt="parking">
+            <p>Full-service Laundry</p>
+          </div>
+          <div id="best-card">
+            <img src="static/images/bed (1).png" alt="parking">
+            <p>Family size room </p>
+          </div>
+          <div id="best-card">
+            <img src="static/images/air-conditioning (1).png" alt="parking">
+            <p>Air conditioning</p>
+          </div>
+          <div id="best-card">
+            <img src="static/images/wifi (1).png" alt="parking">
+            <p>Speedy Wifi Zone</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="page4">
+        <div id="p4up">
+          <h5>SERVICES</h5>
+          <h3>Our Amazing Services</h3> 
+        </div>
+        <div id="p4bot">
+          <div id="left4">
+            <div id="service-lbl">
+              <h3>Restaurant Service</h3>
+              <p>Providing food and drink services to guests in restaurant, showing attentiveness, and understanding of their needs and expectation.</p>
+            </div>
+            <div id="service-lbl">
+              <h3>Room Service</h3>
+              <p>We Serve Food And Beverages to guests in their rooms. At Hotel Maninagar Residency we have the best room service you could ask for.</p>
+            </div>
+            <div id="service-lbl">
+              <h3>Laundry And Dry-Cleaning</h3>
+              <p>We Provide on-demand Laundry and Dry-Cleaning service outside hotel.</p>
+            </div>
+            <div id="service-lbl">
+              <h3>Car Parking</h3>
+              <p>Hotel with free parking.</p>
+            </div>
+          </div>
+          <div id="right4">
+            <img src="static/images/l.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  {% endblock main %}  

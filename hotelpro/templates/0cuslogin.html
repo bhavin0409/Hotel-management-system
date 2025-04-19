@@ -1,0 +1,59 @@
+{% extends "0main.html" %}
+{% block title %}
+  Login
+{% endblock title %}
+{% block link1 %}
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static '/static/css/about.css' %}">
+  <link rel="stylesheet" href="{% static '/static/css/log.css' %}">
+  {% endblock link1 %}
+{% block main %}
+<div class="container-fluid px-0">
+    <div class="v111_759">
+      <div class="v111_760"></div>
+     <div class="v111_761"></div>
+     <span class="v111_762"> Login</span>
+</div>
+
+<div class="clr"></div>
+<div style="width: 90%;margin: auto;margin-top: 3%;">
+    <div class="reg">
+        <p>Login Customer </p>
+        <hr>
+        <form action="" style="margin-bottom: 5%;" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">EMAIL ADDRESS </label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="cname"
+                    aria-describedby="emailHelp">
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleInputPassword2" class="form-label">PASSWORD </label>
+                <input type="password" class="form-control" name="cpassword" id="exampleInputPassword2">
+            </div>
+            {%if messages%}
+                <div id="error-alert" class="alert alert-danger" role="alert">
+                    {% for loging in messages %}
+                    {{loging}}
+                    {% endfor %}
+                </div>
+            {%endif%}
+            <center>
+                <p style="font-size: 17px;font-weight:500;">Don't have an account?<a href="/cus_registration"
+                        style="text-decoration: none;"> Sign up</a></p>
+            </center>
+            <button type="submit" name="btn1" class="btn btn-dark" 
+                style="border-radius: 1px;width: 20%;font-size: 100%;">LOGIN</button>
+        </form>
+
+    </div>
+</div>
+
+</div>
+<div class="clr"></div>
+
+<script src="{% static '/static/js/msg.js' %}"></script>
+{% endblock main %}

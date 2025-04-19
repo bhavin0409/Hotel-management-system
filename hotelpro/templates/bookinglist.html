@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class="container mt-3">
+    <form method="POST" id="bookingForm">
+        <hr>
+        <h4 class="text-center"> Search Registration Details</h4>
+        <hr>
+        {% csrf_token %}
+        <div class="row justify-content-between">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <span class="form-label">Room Number:</span>
+                    <input class="form-control " type="number" name="number" id="number" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <span class="form-label">Check In:</span>
+                    <input class="form-control" id="check_in" name="check_in" type="date" required>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <span class="form-label">Check Out:</span>
+                    <input class="form-control " id="check_out" name="check_out" type="date" required>
+                </div>
+            </div>
+            <div class="col-md-5 mt-3 ">
+                <div class="form-group">
+                    <button class="btn btn-success" id="submitButton"> Search Data</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <br>
+    <div class="row justify-content-between mt-2">
+        <div class="table-responsive">
+            <hr>
+            <h4 class="text-center">Registration Details</h4>
+            <hr>
+            <table class="table table-bordered border-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Booking <br>Id </th>
+                        <th scope="col">Customer <br>Id</th>
+                        <th scope="col">Customer <br>Name</th>
+                        <th scope="col">Customer <br>Email</th>
+                        <th scope="col">Customer <br>Phone No.</th>
+                        <th scope="col">Booking <br> Check In Date</th>
+                        <th scope="col">Booking <br> Check Out Date</th>
+                        <th scope="col">Booking <br> Room Number</th>
+                        <th scope="col">Booking <br> Room Type</th>
+                        <th scope="col">Total <br> Payable Price </th>
+                        <th scope="col"> Booking <br> Status </th>
+                        <th scope="col">Update Status</th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+
+
+
+                    {% if avail %}
+                    {% for i in avail %}
+
+                    <tr>
+                        <td scope="col">{{i.Booking_id}}</td>
+                        <td scope="col">{{i.Booking_cus_id}}</td>
+                        <td scope="col">{{i.Booking_cus_name}}</td>
+                        <td scope="col">{{i.Booking_cus_email}}</td>
+                        <td scope="col">{{i.Booking_cus_mobileno}}</td>
+                        <td scope="col">{{i.Booking_checkin}}</td>
+                        <td scope="col">{{i.Booking_checkout}}</td>
+                        <td scope="col">{{i.Booking_r_number}}</td>
+                        <td scope="col">{{i.Booking_r_type}}</td>
+                        <td scope="col">{{i.Booking_totalprice}}</td>
+                        <td scope="col">{{i.Booking_status}}</td>
+                        <td scope="col"><a class="btn btn-outline-primary"href="/update_b_status/{{i.Booking_id}}">update Status</a></td>
+
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        {% for i in booking %}
+                    <tr>
+                        <td scope="col">{{i.Booking_id}}</td>
+                        <td scope="col">{{i.Booking_cus_id}}</td>
+                        <td scope="col">{{i.Booking_cus_name}}</td>
+                        <td scope="col">{{i.Booking_cus_email}}</td>
+                        <td scope="col">{{i.Booking_cus_mobileno}}</td>
+                        <td scope="col">{{i.Booking_checkin}}</td>
+                        <td scope="col">{{i.Booking_checkout}}</td>
+                        <td scope="col">{{i.Booking_r_number}}</td>
+                        <td scope="col">{{i.Booking_r_type}}</td>
+                        <td scope="col">{{i.Booking_totalprice}}</td>
+                        <td scope="col">{{i.Booking_status}}</td>
+                        <td scope="col"><a class="btn btn-outline-primary"
+                                href="/update_b_status/{{i.Booking_id}}">update
+                                Status</a></td>
+
+                    </tr>
+                    {% endfor %}
+                    </tr>
+
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
